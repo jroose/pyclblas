@@ -37,8 +37,8 @@ typedef cl_float2 FloatComplex;
 %{
 void handle_cl_error(clblasStatus stat, char* errmsg) {
     char descno[32];
-    descno[32] = '\0';
-    snprintf(descno, 1023, "%d", stat);
+    descno[31] = '\0';
+    snprintf(descno, 31, "%d", stat);
 
     const char* desc = descno;
     if(stat==CL_DEVICE_NOT_FOUND) desc="CL_DEVICE_NOT_FOUND";
@@ -109,8 +109,8 @@ void handle_cl_error(clblasStatus stat, char* errmsg) {
 
 void handle_error(clblasStatus stat, char* errmsg) {
     char descno[32];
-    descno[32] = '\0';
-    snprintf(descno, 1023, "%d", stat);
+    descno[31] = '\0';
+    snprintf(descno, 31, "%d", stat);
 
     const char* desc = descno;
 
@@ -448,4 +448,4 @@ clblasStatus clblasSgemm(
   );
 */
  
-%include <clBLAS.h>
+%include "clBLAS.h"

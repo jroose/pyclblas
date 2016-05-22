@@ -1,0 +1,2 @@
+include README.txt src/*.h src/*.i src/*.py src/*.c
+recursive-include examples *.py *.i *.c *.h
