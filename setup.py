@@ -1,11 +1,19 @@
 from distutils.core import setup, Extension
+import sys
 
 with open('README.txt','r') as fin:
     longdesc = fin.read()
 
+sys.path.insert(0,"./src")
+
+#from pyclblas_gen import gen_output
+#with open("src/pyclblas.py","wb") as fout:
+#    fout.write(gen_output("src/pyclblas_functions.i"))
+
+
 setup(
     name='pyclblas',
-    version='0.1.0',
+    version='0.5.0',
     py_modules=['pyclblas_swig', 'pyclblas'],
     description='Python Bindings for the OpenCL BLAS library (clBLAS)',
     author='Jon Roose',
