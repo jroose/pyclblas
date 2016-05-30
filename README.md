@@ -7,8 +7,8 @@ Linux binaries and source packages are available at the project's [PyPI page](ht
 * sudo pip install pyclblas
 * Installation Requirements (Non-Python):
     * OpenCL installation
-    * [clBLAS](https://github.com/clMathLibraries/clBLAS) (Available in apt-get)
-    * [SWIG](https://www.swig.org/) (Available in apt-get and yum)
+    * [clBLAS](https://github.com/clMathLibraries/clBLAS) (Available in Ubuntu repos)
+    * [SWIG](https://www.swig.org/) (Available in Ubuntu and CentOS repos)
 * Installation Requirements (Python Packages):
-    * [pyopencl](https://github.com/pyopencl/pyopencl/)
-    * [numpy](https://github.com/numpy/numpy)
+    * [pyopencl](https://github.com/pyopencl/pyopencl/) (Available in pip)
+    * [numpy](https://github.com/numpy/numpy) (Available in pip)
