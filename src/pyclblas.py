@@ -12,6 +12,14 @@ from pyclblas_swig import clblasNonUnit
 from pyclblas_swig import clblasLeft
 from pyclblas_swig import clblasRight
 
+
+#####CLEANUP CODE#####
+import atexit
+
+@atexit.register
+def _cleanup():
+    pyclblas_swig.shutdown()
+
 def clblasGetVersion():
     """ wraps: `clblasGetVersion <http://clmathlibraries.github.io/clBLAS/group__VERSION.html#ga5b7a3f10272fa76b1cca152eeea78ede>`_
 
@@ -63,7 +71,7 @@ interchanges two vectors of complex-float elements.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCswap(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -91,7 +99,7 @@ interchanges two vectors of double.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDswap(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -119,7 +127,7 @@ interchanges two vectors of float.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSswap(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -147,7 +155,7 @@ interchanges two vectors of double-complex elements.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZswap(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -175,7 +183,7 @@ Scales a complex-float vector by a complex-float constant.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCscal(N, alpha, X, offx, incx, commandQueues, eventWaitList)
@@ -203,7 +211,7 @@ Scales a double vector by a double constant.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDscal(N, alpha, X, offx, incx, commandQueues, eventWaitList)
@@ -231,7 +239,7 @@ Scales a float vector by a float constant.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSscal(N, alpha, X, offx, incx, commandQueues, eventWaitList)
@@ -259,7 +267,7 @@ Scales a complex-double vector by a complex-double constant.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZscal(N, alpha, X, offx, incx, commandQueues, eventWaitList)
@@ -287,7 +295,7 @@ Scales a complex-float vector by a float constant.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCsscal(N, alpha, X, offx, incx, commandQueues, eventWaitList)
@@ -315,7 +323,7 @@ Scales a complex-double vector by a double constant.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZdscal(N, alpha, X, offx, incx, commandQueues, eventWaitList)
@@ -347,7 +355,7 @@ Copies complex-float elements from vector X to vector Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCcopy(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -379,7 +387,7 @@ Copies double elements from vector X to vector Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDcopy(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -411,7 +419,7 @@ Copies float elements from vector X to vector Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasScopy(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -443,7 +451,7 @@ Copies complex-double elements from vector X to vector Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZcopy(N, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -477,7 +485,7 @@ Scale vector X of complex-float elements and add to Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCaxpy(N, alpha, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -511,7 +519,7 @@ Scale vector X of double elements and add to Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDaxpy(N, alpha, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -545,7 +553,7 @@ Scale vector X of float elements and add to Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSaxpy(N, alpha, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -579,7 +587,7 @@ Scale vector X of double-complex elements and add to Y.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZaxpy(N, alpha, X, offx, incx, Y, offy, incy, commandQueues, eventWaitList)
@@ -613,7 +621,7 @@ dot product of two vectors containing float-complex elements conjugating the fir
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCdotc(N, dotProduct, offDP, X, offx, incx, Y, offy, incy, scratchBuff, commandQueues, eventWaitList)
@@ -647,7 +655,7 @@ dot product of two vectors containing float-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCdotu(N, dotProduct, offDP, X, offx, incx, Y, offy, incy, scratchBuff, commandQueues, eventWaitList)
@@ -681,7 +689,7 @@ dot product of two vectors containing double elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDdot(N, dotProduct, offDP, X, offx, incx, Y, offy, incy, scratchBuff, commandQueues, eventWaitList)
@@ -715,7 +723,7 @@ dot product of two vectors containing float elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSdot(N, dotProduct, offDP, X, offx, incx, Y, offy, incy, scratchBuff, commandQueues, eventWaitList)
@@ -749,7 +757,7 @@ dot product of two vectors containing double-complex elements conjugating the fi
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZdotc(N, dotProduct, offDP, X, offx, incx, Y, offy, incy, scratchBuff, commandQueues, eventWaitList)
@@ -783,7 +791,7 @@ dot product of two vectors containing double-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZdotu(N, dotProduct, offDP, X, offx, incx, Y, offy, incy, scratchBuff, commandQueues, eventWaitList)
@@ -813,7 +821,7 @@ construct givens plane rotation on float-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCrotg(CA, offCA, CB, offCB, C, offC, S, offS, commandQueues, eventWaitList)
@@ -843,7 +851,7 @@ construct givens plane rotation on double elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDrotg(DA, offDA, DB, offDB, C, offC, S, offS, commandQueues, eventWaitList)
@@ -873,7 +881,7 @@ construct givens plane rotation on float elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSrotg(SA, offSA, SB, offSB, C, offC, S, offS, commandQueues, eventWaitList)
@@ -903,7 +911,7 @@ construct givens plane rotation on double-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZrotg(CA, offCA, CB, offCB, C, offC, S, offS, commandQueues, eventWaitList)
@@ -937,7 +945,7 @@ construct the modified givens rotation on double elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDrotmg(DD1, offDD1, DD2, offDD2, DX1, offDX1, DY1, offDY1, DPARAM, offDparam, commandQueues, eventWaitList)
@@ -971,7 +979,7 @@ construct the modified givens rotation on float elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSrotmg(SD1, offSD1, SD2, offSD2, SX1, offSX1, SY1, offSY1, SPARAM, offSparam, commandQueues, eventWaitList)
@@ -1003,7 +1011,7 @@ applies a plane rotation for float-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCsrot(N, X, offx, incx, Y, offy, incy, C, S, commandQueues, eventWaitList)
@@ -1035,7 +1043,7 @@ applies a plane rotation for double elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDrot(N, X, offx, incx, Y, offy, incy, C, S, commandQueues, eventWaitList)
@@ -1067,7 +1075,7 @@ applies a plane rotation for float elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSrot(N, X, offx, incx, Y, offy, incy, C, S, commandQueues, eventWaitList)
@@ -1099,7 +1107,7 @@ applies a plane rotation for double-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZdrot(N, X, offx, incx, Y, offy, incy, C, S, commandQueues, eventWaitList)
@@ -1131,7 +1139,7 @@ modified givens rotation for double elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDrotm(N, X, offx, incx, Y, offy, incy, DPARAM, offDparam, commandQueues, eventWaitList)
@@ -1163,7 +1171,7 @@ modified givens rotation for float elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSrotm(N, X, offx, incx, Y, offy, incy, SPARAM, offSparam, commandQueues, eventWaitList)
@@ -1191,7 +1199,7 @@ computes the euclidean norm of vector containing double elements NRM2 = sqrt( X'
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDnrm2(N, NRM2, offNRM2, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1219,7 +1227,7 @@ computes the euclidean norm of vector containing double-complex elements NRM2 = 
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDznrm2(N, NRM2, offNRM2, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1247,7 +1255,7 @@ computes the euclidean norm of vector containing float-complex elements NRM2 = s
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasScnrm2(N, NRM2, offNRM2, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1275,7 +1283,7 @@ computes the euclidean norm of vector containing float elements NRM2 = sqrt( X' 
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSnrm2(N, NRM2, offNRM2, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1303,7 +1311,7 @@ index of max absolute value in a complex float array
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasiCamax(N, iMax, offiMax, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1331,7 +1339,7 @@ index of max absolute value in a double array
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasiDamax(N, iMax, offiMax, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1359,7 +1367,7 @@ index of max absolute value in a float array
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasiSamax(N, iMax, offiMax, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1387,7 +1395,7 @@ index of max absolute value in a complex double array
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasiZamax(N, iMax, offiMax, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1415,7 +1423,7 @@ absolute sum of values of a vector containing double elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDasum(N, asum, offAsum, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1443,7 +1451,7 @@ absolute sum of values of a vector containing double-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDzasum(N, asum, offAsum, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1471,7 +1479,7 @@ absolute sum of values of a vector containing float elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSasum(N, asum, offAsum, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1499,7 +1507,7 @@ absolute sum of values of a vector containing float-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasScasum(N, asum, offAsum, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1549,7 +1557,7 @@ Matrix-vector product with a general rectangular matrix and float complex elemen
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCgemv(order, transA, M, N, alpha, A, offA, lda, x, offx, incx, beta, y, offy, incy, commandQueues, eventWaitList)
@@ -1599,7 +1607,7 @@ Matrix-vector product with a general rectangular matrix and double elements. Ext
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDgemv(order, transA, M, N, alpha, A, offA, lda, x, offx, incx, beta, y, offy, incy, commandQueues, eventWaitList)
@@ -1649,7 +1657,7 @@ Matrix-vector product with a general rectangular matrix and float elements. Exte
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSgemv(order, transA, M, N, alpha, A, offA, lda, x, offx, incx, beta, y, offy, incy, commandQueues, eventWaitList)
@@ -1699,7 +1707,7 @@ Matrix-vector product with a general rectangular matrix and double complex eleme
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZgemv(order, transA, M, N, alpha, A, offA, lda, x, offx, incx, beta, y, offy, incy, commandQueues, eventWaitList)
@@ -1745,7 +1753,7 @@ Matrix-vector product with a symmetric matrix and double elements. Matrix-vector
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsymv(order, uplo, N, alpha, A, offA, lda, x, offx, incx, beta, y, offy, incy, commandQueues, eventWaitList)
@@ -1791,7 +1799,7 @@ Matrix-vector product with a symmetric matrix and float elements. Matrix-vector 
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsymv(order, uplo, N, alpha, A, offA, lda, x, offx, incx, beta, y, offy, incy, commandQueues, eventWaitList)
@@ -1837,7 +1845,7 @@ Matrix-vector product with a hermitian matrix and float-complex elements. Matrix
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasChemv(order, uplo, N, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -1883,7 +1891,7 @@ Matrix-vector product with a hermitian matrix and double-complex elements. Matri
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZhemv(order, uplo, N, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -1927,7 +1935,7 @@ Matrix-vector product with a triangular matrix and float complex elements. Matri
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtrmv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -1971,7 +1979,7 @@ Matrix-vector product with a triangular matrix and double elements. Matrix-vecto
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtrmv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -2015,7 +2023,7 @@ Matrix-vector product with a triangular matrix and float elements. Matrix-vector
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStrmv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -2059,7 +2067,7 @@ Matrix-vector product with a triangular matrix and double complex elements. Matr
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtrmv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -2101,7 +2109,7 @@ solving triangular matrix problems with float-complex elements. Matrix-vector pr
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtrsv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -2143,7 +2151,7 @@ solving triangular matrix problems with double elements. Matrix-vector products:
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtrsv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -2185,7 +2193,7 @@ solving triangular matrix problems with float elements. Matrix-vector products:
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStrsv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -2227,7 +2235,7 @@ solving triangular matrix problems with double-complex elements. Matrix-vector p
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtrsv(order, uplo, trans, diag, N, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -2271,7 +2279,7 @@ vector-vector product with double elements and performs the rank 1 operation A V
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDger(order, M, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2315,7 +2323,7 @@ vector-vector product with float elements and performs the rank 1 operation A Ve
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSger(order, M, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2359,7 +2367,7 @@ vector-vector product with float complex elements and performs the rank 1 operat
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCgeru(order, M, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2403,7 +2411,7 @@ vector-vector product with double complex elements and performs the rank 1 opera
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZgeru(order, M, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2447,7 +2455,7 @@ vector-vector product with float complex elements and performs the rank 1 operat
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCgerc(order, M, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2491,7 +2499,7 @@ vector-vector product with double complex elements and performs the rank 1 opera
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZgerc(order, M, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2529,7 +2537,7 @@ Symmetric rank 1 operation with a general triangular matrix and double elements.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsyr(order, uplo, N, alpha, X, offx, incx, A, offa, lda, commandQueues, eventWaitList)
@@ -2567,7 +2575,7 @@ Symmetric rank 1 operation with a general triangular matrix and float elements. 
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsyr(order, uplo, N, alpha, X, offx, incx, A, offa, lda, commandQueues, eventWaitList)
@@ -2605,7 +2613,7 @@ hermitian rank 1 operation with a general triangular matrix and float-complex el
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCher(order, uplo, N, alpha, X, offx, incx, A, offa, lda, commandQueues, eventWaitList)
@@ -2643,7 +2651,7 @@ hermitian rank 1 operation with a general triangular matrix and double-complex e
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZher(order, uplo, N, alpha, X, offx, incx, A, offa, lda, commandQueues, eventWaitList)
@@ -2687,7 +2695,7 @@ Symmetric rank 2 operation with a general triangular matrix and double elements.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsyr2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2731,7 +2739,7 @@ Symmetric rank 2 operation with a general triangular matrix and float elements. 
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsyr2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2775,7 +2783,7 @@ Hermitian rank 2 operation with a general triangular matrix and float-compelx el
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCher2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2819,7 +2827,7 @@ Hermitian rank 2 operation with a general triangular matrix and double-compelx e
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZher2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, A, offa, lda, commandQueues, eventWaitList)
@@ -2861,7 +2869,7 @@ Matrix-vector product with a packed triangular matrix and float-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtpmv(order, uplo, trans, diag, N, AP, offa, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -2903,7 +2911,7 @@ Matrix-vector product with a packed triangular matrix and double elements. Matri
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtpmv(order, uplo, trans, diag, N, AP, offa, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -2945,7 +2953,7 @@ Matrix-vector product with a packed triangular matrix and float elements. Matrix
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStpmv(order, uplo, trans, diag, N, AP, offa, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -2987,7 +2995,7 @@ Matrix-vector product with a packed triangular matrix and double-complex element
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtpmv(order, uplo, trans, diag, N, AP, offa, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -3027,7 +3035,7 @@ solving triangular packed matrix problems with float complex elements. Matrix-ve
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtpsv(order, uplo, trans, diag, N, A, offa, X, offx, incx, commandQueues, eventWaitList)
@@ -3067,7 +3075,7 @@ solving triangular packed matrix problems with double elements. Matrix-vector pr
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtpsv(order, uplo, trans, diag, N, A, offa, X, offx, incx, commandQueues, eventWaitList)
@@ -3107,7 +3115,7 @@ solving triangular packed matrix problems with float elements. Matrix-vector pro
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStpsv(order, uplo, trans, diag, N, A, offa, X, offx, incx, commandQueues, eventWaitList)
@@ -3147,7 +3155,7 @@ solving triangular packed matrix problems with double complex elements. Matrix-v
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtpsv(order, uplo, trans, diag, N, A, offa, X, offx, incx, commandQueues, eventWaitList)
@@ -3191,7 +3199,7 @@ Matrix-vector product with a symmetric packed-matrix and double elements. Matrix
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDspmv(order, uplo, N, alpha, AP, offa, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3235,7 +3243,7 @@ Matrix-vector product with a symmetric packed-matrix and float elements. Matrix-
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSspmv(order, uplo, N, alpha, AP, offa, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3279,7 +3287,7 @@ Matrix-vector product with a packed hermitian matrix and float-complex elements.
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasChpmv(order, uplo, N, alpha, AP, offa, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3323,7 +3331,7 @@ Matrix-vector product with a packed hermitian matrix and double-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZhpmv(order, uplo, N, alpha, AP, offa, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3359,7 +3367,7 @@ Symmetric rank 1 operation with a general triangular packed-matrix and double el
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDspr(order, uplo, N, alpha, X, offx, incx, AP, offa, commandQueues, eventWaitList)
@@ -3395,7 +3403,7 @@ Symmetric rank 1 operation with a general triangular packed-matrix and float ele
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSspr(order, uplo, N, alpha, X, offx, incx, AP, offa, commandQueues, eventWaitList)
@@ -3431,7 +3439,7 @@ hermitian rank 1 operation with a general triangular packed-matrix and float-com
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasChpr(order, uplo, N, alpha, X, offx, incx, AP, offa, commandQueues, eventWaitList)
@@ -3467,7 +3475,7 @@ hermitian rank 1 operation with a general triangular packed-matrix and double-co
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZhpr(order, uplo, N, alpha, X, offx, incx, AP, offa, commandQueues, eventWaitList)
@@ -3509,7 +3517,7 @@ Symmetric rank 2 operation with a general triangular packed-matrix and double el
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDspr2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, AP, offa, commandQueues, eventWaitList)
@@ -3551,7 +3559,7 @@ Symmetric rank 2 operation with a general triangular packed-matrix and float ele
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSspr2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, AP, offa, commandQueues, eventWaitList)
@@ -3593,7 +3601,7 @@ Hermitian rank 2 operation with a general triangular packed-matrix and float-com
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasChpr2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, AP, offa, commandQueues, eventWaitList)
@@ -3635,7 +3643,7 @@ Hermitian rank 2 operation with a general triangular packed-matrix and double-co
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZhpr2(order, uplo, N, alpha, X, offx, incx, Y, offy, incy, AP, offa, commandQueues, eventWaitList)
@@ -3689,7 +3697,7 @@ Matrix-vector product with a general rectangular banded matrix and float-complex
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCgbmv(order, trans, M, N, KL, KU, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3743,7 +3751,7 @@ Matrix-vector product with a general rectangular banded matrix and double elemen
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDgbmv(order, trans, M, N, KL, KU, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3797,7 +3805,7 @@ Matrix-vector product with a general rectangular banded matrix and float element
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSgbmv(order, trans, M, N, KL, KU, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3851,7 +3859,7 @@ Matrix-vector product with a general rectangular banded matrix and double-comple
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZgbmv(order, trans, M, N, KL, KU, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -3897,7 +3905,7 @@ Matrix-vector product with a triangular banded matrix and float-complex elements
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtbmv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -3943,7 +3951,7 @@ Matrix-vector product with a triangular banded matrix and double elements. Matri
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtbmv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -3989,7 +3997,7 @@ Matrix-vector product with a triangular banded matrix and float elements. Matrix
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStbmv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -4035,7 +4043,7 @@ Matrix-vector product with a triangular banded matrix and double-complex element
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtbmv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, scratchBuff, commandQueues, eventWaitList)
@@ -4083,7 +4091,7 @@ Matrix-vector product with a symmetric banded matrix and double elements. Matrix
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsbmv(order, uplo, N, K, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -4131,7 +4139,7 @@ Matrix-vector product with a symmetric banded matrix and float elements. Matrix-
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsbmv(order, uplo, N, K, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -4179,7 +4187,7 @@ Matrix-vector product with a hermitian banded matrix and float elements. Matrix-
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasChbmv(order, uplo, N, K, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -4227,7 +4235,7 @@ Matrix-vector product with a hermitian banded matrix and double elements. Matrix
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZhbmv(order, uplo, N, K, alpha, A, offa, lda, X, offx, incx, beta, Y, offy, incy, commandQueues, eventWaitList)
@@ -4271,7 +4279,7 @@ solving triangular banded matrix problems with float-complex elements. Matrix-ve
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtbsv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -4315,7 +4323,7 @@ solving triangular banded matrix problems with double elements. Matrix-vector pr
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtbsv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -4359,7 +4367,7 @@ solving triangular banded matrix problems with float elements. Matrix-vector pro
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStbsv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -4403,7 +4411,7 @@ solving triangular banded matrix problems with double-complex elements. Matrix-v
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtbsv(order, uplo, trans, diag, N, K, A, offa, lda, X, offx, incx, commandQueues, eventWaitList)
@@ -4451,7 +4459,7 @@ Matrix-matrix product of general rectangular matrices with float complex element
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -4499,7 +4507,7 @@ Matrix-matrix product of general rectangular matrices with double elements. Exte
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -4547,7 +4555,7 @@ Matrix-matrix product of general rectangular matrices with float elements. Exten
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -4595,7 +4603,7 @@ Matrix-matrix product of general rectangular matrices with double complex elemen
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -4647,7 +4655,7 @@ Multiplying a matrix by a triangular matrix with float complex elements. Extende
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtrmm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4699,7 +4707,7 @@ Multiplying a matrix by a triangular matrix with double elements. Extended versi
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtrmm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4751,7 +4759,7 @@ Multiplying a matrix by a triangular matrix with float elements. Extended versio
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStrmm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4803,7 +4811,7 @@ Multiplying a matrix by a triangular matrix with double complex elements. Extend
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtrmm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4855,7 +4863,7 @@ Solving triangular systems of equations with multiple right-hand sides and float
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCtrsm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4897,7 +4905,7 @@ Solving triangular systems of equations with multiple right-hand sides and doubl
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDtrsm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4939,7 +4947,7 @@ Solving triangular systems of equations with multiple right-hand sides and float
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasStrsm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -4991,7 +4999,7 @@ Solving triangular systems of equations with multiple right-hand sides and doubl
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZtrsm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList)
@@ -5037,7 +5045,7 @@ Rank-k update of a symmetric matrix with complex float elements. Extended versio
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCsyrk(order, uplo, transA, N, K, alpha, A, offA, lda, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5083,7 +5091,7 @@ Rank-k update of a symmetric matrix with double elements. Extended version. Rank
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsyrk(order, uplo, transA, N, K, alpha, A, offA, lda, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5129,7 +5137,7 @@ Rank-k update of a symmetric matrix with float elements. Extended version. Rank-
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsyrk(order, uplo, transA, N, K, alpha, A, offA, lda, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5175,7 +5183,7 @@ Rank-k update of a symmetric matrix with complex double elements. Extended versi
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZsyrk(order, uplo, transA, N, K, alpha, A, offA, lda, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5227,7 +5235,7 @@ Rank-2k update of a symmetric matrix with complex float elements. Extended versi
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCsyr2k(order, uplo, transAB, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5279,7 +5287,7 @@ Rank-2k update of a symmetric matrix with double elements. Extended version. Ran
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsyr2k(order, uplo, transAB, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5331,7 +5339,7 @@ Rank-2k update of a symmetric matrix with float elements. Extended version. Rank
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsyr2k(order, uplo, transAB, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5383,7 +5391,7 @@ Rank-2k update of a symmetric matrix with complex double elements. Extended vers
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZsyr2k(order, uplo, transAB, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList)
@@ -5435,7 +5443,7 @@ Matrix-matrix product of symmetric rectangular matrices with float-complex eleme
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCsymm(order, side, uplo, M, N, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5487,7 +5495,7 @@ Matrix-matrix product of symmetric rectangular matrices with double elements. Ma
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasDsymm(order, side, uplo, M, N, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5539,7 +5547,7 @@ Matrix-matrix product of symmetric rectangular matrices with float elements. Mat
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasSsymm(order, side, uplo, M, N, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5591,7 +5599,7 @@ Matrix-matrix product of symmetric rectangular matrices with double-complex elem
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZsymm(order, side, uplo, M, N, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5643,7 +5651,7 @@ Matrix-matrix product of hermitian rectangular matrices with float-complex eleme
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasChemm(order, side, uplo, M, N, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5695,7 +5703,7 @@ Matrix-matrix product of hermitian rectangular matrices with double-complex elem
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZhemm(order, side, uplo, M, N, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5741,7 +5749,7 @@ Rank-k update of a hermitian matrix with float-complex elements. Rank-k updates:
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCherk(order, uplo, transA, N, K, alpha, A, offa, lda, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5787,7 +5795,7 @@ Rank-k update of a hermitian matrix with double-complex elements. Rank-k updates
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZherk(order, uplo, transA, N, K, alpha, A, offa, lda, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5839,7 +5847,7 @@ Rank-2k update of a hermitian matrix with float-complex elements. Rank-k updates
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasCher2k(order, uplo, trans, N, K, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)
@@ -5891,7 +5899,7 @@ Rank-2k update of a hermitian matrix with double-complex elements. Rank-k update
 :type commandQueues: pyopencl.CommandQueue [in]
 :param eventWaitList: Event wait list. A list, tuple, or single instance of pyopencl.Event. May be None.
 :type eventWaitList: pyopencl.Event [in]
-:return: Tuple of pyopencl.Event instances, one for each commandQueue
+:return: A tuple of pyopencl.Event instances, one for each commandQueue supplied.
 
 """
     return pyclblas_swig.clblasZher2k(order, uplo, trans, N, K, alpha, A, offa, lda, B, offb, ldb, beta, C, offc, ldc, commandQueues, eventWaitList)

@@ -98,7 +98,7 @@ ArgsRemoved = (
 )
 
 ArgsReturned = (
-    ((P("cl_event *", "events"),), (P("pyopencl.Event", "events", pdesc="Tuple of pyopencl.Event instances, one for each commandQueue"),)),
+    ((P("cl_event *", "events"),), (P("pyopencl.Event", "events", pdesc="A tuple of pyopencl.Event instances, one for each commandQueue supplied."),)),
     ((P("cl_uint *", "major"), P("cl_uint *", "minor"), P("cl_uint *", "patch")), (P("str", "version", pdesc="Version string as %s.%s.%s % (major, minor, patch)"),)),
 )
 
@@ -116,6 +116,15 @@ from pyclblas_swig import clblasUnit
 from pyclblas_swig import clblasNonUnit
 from pyclblas_swig import clblasLeft
 from pyclblas_swig import clblasRight
+
+
+#####CLEANUP CODE#####
+import atexit
+
+@atexit.register
+def _cleanup():
+    pyclblas_swig.shutdown()
+
 """.strip()
 print
 
