@@ -10,5 +10,5 @@ Linux binaries and source packages are available at the project's [PyPI page](ht
     * [clBLAS](https://github.com/clMathLibraries/clBLAS) (Available in Ubuntu repos)
     * [SWIG](https://www.swig.org/) (Available in Ubuntu and CentOS repos)
 * Installation Requirements (Python Packages):
-    * [pyopencl](https://github.com/pyopencl/pyopencl/) (Available in pip)
-    * [numpy](https://github.com/numpy/numpy) (Available in pip)
+    * [pyopencl](https://github.com/pyopencl/pyopencl/)
+    * [numpy](https://github.com/numpy/numpy)
