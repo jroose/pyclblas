@@ -3,7 +3,7 @@ The package pyclblas is a wrapper for the clBLAS library.  This library can be u
 Documentation is available at [ReadTheDocs.org](https://pyclblas.readthedocs.io/en/latest/index.html)
 Linux binaries and source packages are available at the project's [PyPI page](https://pypi.python.org/pypi/pyclblas/)
 
-Installing PyCLBLAS:
+###Installation:
 * `sudo pip install pyclblas`
 * Installation Requirements (Non-Python):
     * OpenCL installation
