@@ -16,7 +16,7 @@ import sys
 import os
 import sys
 
-from unittest.mock import MagicMock
+from mock import Mock as MagicMock
 
 class Mock(MagicMock):
     @classmethod
@@ -44,7 +44,6 @@ import sphinx_rtd_theme
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
-    'sphinx.ext.autobuild',
     'sphinx.ext.doctest',
     'sphinx.ext.coverage',
     'sphinx.ext.pngmath',
