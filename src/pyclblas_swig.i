@@ -285,7 +285,7 @@ void clblasExceptionRaise(clblasStatus stat) {
         }else{
             $2 = NULL;
         }
-    }else if(!PyObject_IsInstance($input, pocl_queue_class)) {
+    }else if(PyObject_IsInstance($input, pocl_queue_class)) {
         PyObject* decr;
         queues = (cl_command_queue*) calloc(sizeof(cl_command_queue), 1);
         queues[0] = ((cl_command_queue) PyLong_AsVoidPtr(decr=PyObject_GetAttrString($input, "int_ptr")));
