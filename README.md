@@ -1,5 +1,5 @@
 ###Description
-The package pyclblas is a wrapper for the clBLAS library.  This library can be used to call BLAS routines on OpenCL enabled systems and devices.  
+PyCLBLAS is a wrapper for the clBLAS library.  This module can be used to call BLAS routines on OpenCL enabled devices from Python.
 
 ###Resources
 *Documentation is available at [ReadTheDocs.org](https://pyclblas.readthedocs.io/en/latest/index.html)
