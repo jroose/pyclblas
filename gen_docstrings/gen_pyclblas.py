@@ -168,7 +168,7 @@ for atag in data.findAll('a',{'class':'el'}):
         for t_subdoc in t_memdoc.contents:
             if isinstance(t_subdoc, bs.element.Tag) and 'class' in t_subdoc.attrs and "params" in t_subdoc['class']: break
             if isinstance(t_subdoc, bs.element.Tag) and 'class' in t_subdoc.attrs and "return" in t_subdoc['class']: break
-            if isinstance(t_subdoc, bs.element.Tag) and 'class' in t_subdoc.attrs and "note" in t_subdoc['class']: break
+            #if isinstance(t_subdoc, bs.element.Tag) and 'class' in t_subdoc.attrs and "note" in t_subdoc['class']: break
             if isinstance(t_subdoc, bs.element.Tag) and "Examples" in t_subdoc.get_text(): break
             fdesc.append(prettify(t_subdoc))
         fdesc = cleanup(" ".join(fdesc))

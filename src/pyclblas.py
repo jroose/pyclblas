@@ -33,7 +33,7 @@ Get the clblas library version info.
 def clblasSetup():
     """ wraps: `clblasSetup <http://clmathlibraries.github.io/clBLAS/group__INIT.html#gab0c597e62144c27ea6f9c100ee40bb6d>`_
 
-Initialize the clblas library. Must be called before any other clblas API function is invoked.
+Initialize the clblas library. Must be called before any other clblas API function is invoked. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl>
 
 
 """
@@ -42,7 +42,7 @@ Initialize the clblas library. Must be called before any other clblas API functi
 def clblasTeardown():
     """ wraps: `clblasTeardown <http://clmathlibraries.github.io/clBLAS/group__INIT.html#ga737647d266623bb1aa27043fdaa9298f>`_
 
-Finalize the usage of the clblas library. Frees all memory allocated for different computational kernel and other internal data.
+Finalize the usage of the clblas library. Frees all memory allocated for different computational kernel and other internal data. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl>
 
 
 """
@@ -4419,7 +4419,17 @@ solving triangular banded matrix problems with double-complex elements. Matrix-v
 def clblasCgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList):
     """ wraps: `clblasCgemm <http://clmathlibraries.github.io/clBLAS/group__GEMM.html#ga48e1cfff6b71f538618cfd0774e92eef>`_
 
-Matrix-matrix product of general rectangular matrices with float complex elements. Extended version.
+Matrix-matrix product of general rectangular matrices with float complex elements. Extended version. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl> Matrix-matrix products: 
+
+* ( C |larr| |alpha| A B + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B + |beta| C ) 
+
+* ( C |larr| |alpha| A B\ :sup:`T`\ + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B\ :sup:`T`\ + |beta| C )
+
+
 
 :param order: Row/column order.
 :type order: clblasOrder [in]
@@ -4467,7 +4477,17 @@ Matrix-matrix product of general rectangular matrices with float complex element
 def clblasDgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList):
     """ wraps: `clblasDgemm <http://clmathlibraries.github.io/clBLAS/group__GEMM.html#ga15b5b2ba7a28915e41f63342c108949b>`_
 
-Matrix-matrix product of general rectangular matrices with double elements. Extended version.
+Matrix-matrix product of general rectangular matrices with double elements. Extended version. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl> Matrix-matrix products: 
+
+* ( C |larr| |alpha| A B + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B + |beta| C ) 
+
+* ( C |larr| |alpha| A B\ :sup:`T`\ + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B\ :sup:`T`\ + |beta| C )
+
+
 
 :param order: Row/column order.
 :type order: clblasOrder [in]
@@ -4515,7 +4535,17 @@ Matrix-matrix product of general rectangular matrices with double elements. Exte
 def clblasSgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList):
     """ wraps: `clblasSgemm <http://clmathlibraries.github.io/clBLAS/group__GEMM.html#ga29d93e46c106ce34249f21e436ed7102>`_
 
-Matrix-matrix product of general rectangular matrices with float elements. Extended version.
+Matrix-matrix product of general rectangular matrices with float elements. Extended version. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl> Matrix-matrix products: 
+
+* ( C |larr| |alpha| A B + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B + |beta| C ) 
+
+* ( C |larr| |alpha| A B\ :sup:`T`\ + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B\ :sup:`T`\ + |beta| C )
+
+
 
 :param order: Row/column order.
 :type order: clblasOrder [in]
@@ -4563,7 +4593,17 @@ Matrix-matrix product of general rectangular matrices with float elements. Exten
 def clblasZgemm(order, transA, transB, M, N, K, alpha, A, offA, lda, B, offB, ldb, beta, C, offC, ldc, commandQueues, eventWaitList):
     """ wraps: `clblasZgemm <http://clmathlibraries.github.io/clBLAS/group__GEMM.html#gafd4a1ef1f8a7273005eb32fb6da12e4c>`_
 
-Matrix-matrix product of general rectangular matrices with double complex elements. Exteneded version.
+Matrix-matrix product of general rectangular matrices with double complex elements. Exteneded version. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl> Matrix-matrix products: 
+
+* ( C |larr| |alpha| A B + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B + |beta| C ) 
+
+* ( C |larr| |alpha| A B\ :sup:`T`\ + |beta| C ) 
+
+* ( C |larr| |alpha| A\ :sup:`T`\ B\ :sup:`T`\ + |beta| C )
+
+
 
 :param order: Row/column order.
 :type order: clblasOrder [in]
@@ -4871,7 +4911,17 @@ Solving triangular systems of equations with multiple right-hand sides and float
 def clblasDtrsm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList):
     """ wraps: `clblasDtrsm <http://clmathlibraries.github.io/clBLAS/group__TRSM.html#ga5969c2fd6e74889f60ee4afc7259e2c0>`_
 
-Solving triangular systems of equations with multiple right-hand sides and double elements. Extended version.
+Solving triangular systems of equations with multiple right-hand sides and double elements. Extended version. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl> Solving triangular systems of equations: 
+
+* ( B |larr| |alpha| A\ :sup:`-1`\ B ) 
+
+* ( B |larr| |alpha| A^{-T} B ) 
+
+* ( B |larr| |alpha| B A\ :sup:`-1`\ ) 
+
+* ( B |larr| |alpha| B A^{-T} )
+
+ where **T** is an upper or lower triangular matrix.
 
 :param order: Row/column order.
 :type order: clblasOrder [in]
@@ -4913,7 +4963,17 @@ Solving triangular systems of equations with multiple right-hand sides and doubl
 def clblasStrsm(order, side, uplo, transA, diag, M, N, alpha, A, offA, lda, B, offB, ldb, commandQueues, eventWaitList):
     """ wraps: `clblasStrsm <http://clmathlibraries.github.io/clBLAS/group__TRSM.html#ga7bc3d6be7e001a5f4e585ab6f63abbff>`_
 
-Solving triangular systems of equations with multiple right-hand sides and float elements. Extended version.
+Solving triangular systems of equations with multiple right-hand sides and float elements. Extended version. <dl class="section note"> <dt> Note </dt> <dd> This function is not thread-safe. </dd> </dl> Solving triangular systems of equations: 
+
+* ( B |larr| |alpha| A\ :sup:`-1`\ B ) 
+
+* ( B |larr| |alpha| A^{-T} B ) 
+
+* ( B |larr| |alpha| B A\ :sup:`-1`\ ) 
+
+* ( B |larr| |alpha| B A^{-T} )
+
+ where **T** is an upper or lower triangular matrix.
 
 :param order: Row/column order.
 :type order: clblasOrder [in]

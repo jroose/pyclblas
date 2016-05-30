@@ -17,6 +17,7 @@
  %}
 
 typedef float cl_float;
+typedef double cl_double;
 typedef uint32_t cl_uint;
 typedef cl_double2 DoubleComplex;
 typedef cl_float2 FloatComplex;
@@ -414,6 +415,9 @@ void clblasExceptionRaise(clblasStatus stat) {
     }else if(PyFloat_Check($input)) {
         ret.x = PyFloat_AsDouble($input);
         ret.y = 0.0f;
+    }else if(PyInt_Check($input)) {
+        ret.x = PyInt_AsLong($input);
+        ret.y = 0.0f;
     }else if(PyLong_Check($input)) {
         ret.x = PyLong_AsLongLong($input);
         ret.y = 0.0f;
@@ -423,6 +427,8 @@ void clblasExceptionRaise(clblasStatus stat) {
             PyObject* y = PyList_GetItem($input,1);
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -430,6 +436,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(y))
                 ret.y = PyFloat_AsDouble(y);
+            else if(PyInt_Check(y))
+                ret.y = PyInt_AsLong(y);
             else if(PyLong_Check(y))
                 ret.y = PyLong_AsLongLong(y);
             else
@@ -439,6 +447,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -453,6 +463,8 @@ void clblasExceptionRaise(clblasStatus stat) {
             PyObject* y = PyTuple_GetItem($input,1);
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -460,6 +472,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(y))
                 ret.y = PyFloat_AsDouble(y);
+            else if(PyInt_Check(y))
+                ret.y = PyInt_AsLong(y);
             else if(PyLong_Check(y))
                 ret.y = PyLong_AsLongLong(y);
             else
@@ -469,6 +483,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -490,6 +506,9 @@ void clblasExceptionRaise(clblasStatus stat) {
     }else if(PyFloat_Check($input)) {
         ret.x = PyFloat_AsDouble($input);
         ret.y = 0.0f;
+    }else if(PyInt_Check($input)) {
+        ret.x = PyInt_AsLong($input);
+        ret.y = 0.0f;
     }else if(PyLong_Check($input)) {
         ret.x = PyLong_AsLongLong($input);
         ret.y = 0.0f;
@@ -499,6 +518,8 @@ void clblasExceptionRaise(clblasStatus stat) {
             PyObject* y = PyList_GetItem($input,1);
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -506,6 +527,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(y))
                 ret.y = PyFloat_AsDouble(y);
+            else if(PyInt_Check(y))
+                ret.y = PyInt_AsLong(y);
             else if(PyLong_Check(y))
                 ret.y = PyLong_AsLongLong(y);
             else
@@ -515,6 +538,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -529,6 +554,8 @@ void clblasExceptionRaise(clblasStatus stat) {
             PyObject* y = PyTuple_GetItem($input,1);
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
@@ -536,6 +563,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(y))
                 ret.y = PyFloat_AsDouble(y);
+            else if(PyInt_Check(y))
+                ret.y = PyInt_AsLong(y);
             else if(PyLong_Check(y))
                 ret.y = PyLong_AsLongLong(y);
             else
@@ -545,6 +574,8 @@ void clblasExceptionRaise(clblasStatus stat) {
 
             if(PyFloat_Check(x))
                 ret.x = PyFloat_AsDouble(x);
+            else if(PyInt_Check(x))
+                ret.x = PyInt_AsLong(x);
             else if(PyLong_Check(x))
                 ret.x = PyLong_AsLongLong(x);
             else
