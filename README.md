@@ -2,8 +2,8 @@
 PyCLBLAS is a wrapper for the clBLAS library.  This module can be used to call BLAS routines on OpenCL enabled devices from Python.
 
 ###Resources
-*Documentation is available at [ReadTheDocs.org](https://pyclblas.readthedocs.io/en/latest/index.html)
-*Linux binaries and source packages are available at the project's [PyPI page](https://pypi.python.org/pypi/pyclblas/)
+* Documentation is available at [ReadTheDocs.org](https://pyclblas.readthedocs.io/en/latest/index.html)
+* Linux binaries and source packages are available at the project's [PyPI page](https://pypi.python.org/pypi/pyclblas/)
 
 ###Installation:
 * sudo pip install pyclblas
