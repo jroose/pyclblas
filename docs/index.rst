@@ -14,8 +14,7 @@ Welcome to pyclblas's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
-.. automodule:: pyclblas
-    :members:
+   blasfamilies
 
