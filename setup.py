@@ -13,7 +13,7 @@ sys.path.insert(0,"./src")
 
 setup(
     name='pyclblas',
-    version='0.5.0',
+    version='0.8.0',
     py_modules=['pyclblas_swig', 'pyclblas'],
     description='Python Bindings for the OpenCL BLAS library (clBLAS)',
     author='Jon Roose',
