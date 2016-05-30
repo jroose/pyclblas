@@ -4,8 +4,7 @@ Documentation is available at [ReadTheDocs.org](https://pyclblas.readthedocs.io/
 Linux binaries and source packages are available at the project's [PyPI page](https://pypi.python.org/pypi/pyclblas/)
 
 Installing PyCLBLAS:
-
-`sudo pip install pyclblas`
+* `sudo pip install pyclblas`
 
 * Installation Requirements (Non-Python):
     * OpenCL installation
