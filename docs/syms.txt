@@ -1,0 +1,4 @@
+.. |larr| unicode:: U+02190 .. LEFT ARROW
+.. |rarr| unicode:: U+02192 .. RIGHT ARROW
+.. |alpha| unicode:: U+003B1 .. LOWERCASE ALPHA
+.. |beta| unicode:: U+003B2 .. LOWERCASE BETA
