@@ -5,7 +5,6 @@ Linux binaries and source packages are available at the project's [PyPI page](ht
 
 Installing PyCLBLAS:
 * `sudo pip install pyclblas`
-
 * Installation Requirements (Non-Python):
     * OpenCL installation
     * [clBLAS](https://github.com/clMathLibraries/clBLAS)
