@@ -1,7 +1,7 @@
 from distutils.core import setup, Extension
 import sys
 
-with open('README.txt','r') as fin:
+with open('README.md','r') as fin:
     longdesc = fin.read()
 
 sys.path.insert(0,"./src")
@@ -14,7 +14,7 @@ pyclblas_swig = Extension('_pyclblas_swig', ['src/pyclblas_swig.i'], libraries=[
 
 setup(
     name='pyclblas',
-    version='0.8.1',
+    version='0.8.3',
     py_modules=['pyclblas_swig', 'pyclblas'],
     description='Python Bindings for the OpenCL BLAS library (clBLAS)',
     author='Jon Roose',
