@@ -1,5 +1,15 @@
 from distutils.core import setup, Extension
+from distutils.command.build import build as _build
 import sys
+
+#Define custom build order, so that the python interface module
+#created by SWIG is staged in build_py.
+class build(_build):
+    sub_commands = [('build_ext',     _build.has_ext_modules),
+        ('build_py',      _build.has_pure_modules),
+        ('build_clib',    _build.has_c_libraries),
+        ('build_scripts', _build.has_scripts),
+    ]
 
 with open('README.md','r') as fin:
     longdesc = fin.read()
@@ -10,7 +20,7 @@ sys.path.insert(0,"./src")
 #with open("src/pyclblas.py","wb") as fout:
 #    fout.write(gen_output("src/pyclblas_functions.i"))
 
-pyclblas_swig = Extension('_pyclblas_swig', ['src/pyclblas_swig.i'], libraries=['clBLAS'], py_modules=['pyclblas_swig'])
+pyclblas_swig = Extension('_pyclblas_swig', ['src/pyclblas_swig.i'], libraries=['clBLAS'], py_modules=['pyclblas_swig'], swig_opts=['-modern'])
 
 setup(
     name='pyclblas',
@@ -24,5 +34,6 @@ setup(
     requires=['numpy','pyopencl'],
     package_dir={'': 'src'},
     license="Apache 2.0",
-    long_description=longdesc
+    long_description=longdesc,
+    cmdclass = {'build':build}
 )
