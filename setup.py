@@ -20,7 +20,7 @@ sys.path.insert(0,"./src")
 #with open("src/pyclblas.py","wb") as fout:
 #    fout.write(gen_output("src/pyclblas_functions.i"))
 
-pyclblas_swig = Extension('_pyclblas_swig', ['src/pyclblas_swig.i'], libraries=['clBLAS'], py_modules=['pyclblas_swig'], swig_opts=['-modern'])
+pyclblas_swig = Extension('_pyclblas_swig', ['src/pyclblas_swig.i'], libraries=['clBLAS'])
 
 setup(
     name='pyclblas',
