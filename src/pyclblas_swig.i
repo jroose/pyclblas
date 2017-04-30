@@ -4,7 +4,13 @@
  /* Put header files here or function declarations like below */
 #include <clBLAS.h>
 #include <assert.h>
+
+#if defined(__APPLE__) || defined(__MACOSX)
+#include <OpenCL/opencl.h>
+#else
 #include <CL/cl.h>
+#endif
+
  PyObject* numpy_module;
  PyObject* numpy_ndarray_class;
  PyObject* pocl_module;

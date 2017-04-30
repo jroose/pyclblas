@@ -7,7 +7,7 @@ import pyclblas as blas
 import time
 
 #Select a problem size
-M = 5000
+M = 50000
 K = 1000
 N = 5000
 total_flops = M*K*(2*N+3)
