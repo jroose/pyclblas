@@ -24,7 +24,7 @@ pyclblas_swig = Extension('_pyclblas_swig', ['src/pyclblas_swig.i'], libraries=[
 
 setup(
     name='pyclblas',
-    version='0.8.4',
+    version='0.8.5',
     py_modules=['pyclblas_swig', 'pyclblas'],
     description='Python Bindings for the OpenCL BLAS library (clBLAS)',
     author='Jon Roose',
